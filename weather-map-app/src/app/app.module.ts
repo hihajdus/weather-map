@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { WeatherComponent } from './weather/weather.component';
 import { ForecastComponent } from './forecast/forecast.component';
 import { MapComponent } from './map/map.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MapComponent } from './map/map.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

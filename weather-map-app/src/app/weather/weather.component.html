@@ -1,1 +1,12 @@
 <p>weather works!</p>
+<div>
+	<h1>Current weather data {{city_name}}</h1>
+	<form [formGroup]="form" (ngSubmit)="onSubmit()">
+		<label for="cities">Cities</label>
+		<select formControlName="cities" id="cities">
+			<option *ngFor="let city of cities; let i = index">
+				{{cities[i].name}}
+			</option>
+		</select>
+	</form>
+</div>
