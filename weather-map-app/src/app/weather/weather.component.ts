@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { DataService } from './../services/data.service';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
@@ -6,14 +7,15 @@ import { FormBuilder, FormGroup } from "@angular/forms";
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.scss']
 })
-export class WeatherComponent {
+export class WeatherComponent implements OnInit{
+  cities$;
 
   form: FormGroup;
 
   city_name = 'Katowice';
   cities = [];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, public dataService: DataService) {
     this.form = this.fb.group({
       cities: ['']
     });
@@ -28,6 +30,10 @@ export class WeatherComponent {
       { name: "New York" },
       { name: "London" }
     ];
+  }
+
+  ngOnInit() {
+    this.cities$ = this.dataService.getCities();
   }
 
   onSubmit() {
