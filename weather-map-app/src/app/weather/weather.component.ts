@@ -1,7 +1,7 @@
 import { DataService } from './../services/data.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-weather',
@@ -10,11 +10,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class WeatherComponent implements OnInit{
   cities;
+
+  city = 'London';
+  temp = 0;
   weather;
 
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, public dataService: DataService, private http: HttpClient) {
+  constructor(private fb: FormBuilder, public dataService: DataService) {
     this.form = this.fb.group({
       cities: ['']
     });
@@ -22,11 +25,10 @@ export class WeatherComponent implements OnInit{
 
   ngOnInit() {
     console.log('onInit');
-    this.cities = this.dataService.getCities();
   }
 
   onSubmit() {
+    this.cities = this.dataService.getCities();
     this.weather = this.dataService.getWeather();
-
   }
 }
