@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -9,36 +8,36 @@ import { map } from 'rxjs/operators';
 export class DataService {
   private api = 'http://api.openweathermap.org/data/2.5';
   private key = '4af71dd87878c111509d52acbe644062';
-  public myCity = 'Katowice';
-  actualWeather = [];
-  cities;
-
+  private myCity = 'Katowice';
 
   constructor(private http: HttpClient) {}
 
   getWeather() {
     const weatherData = this.http.get<any>(`${this.api}/weather?q=${this.myCity}&appid=${this.key}`);
 
-    return weatherData.subscribe(
-      data => {
-        this.actualWeather = data;
-        const weather = data.weather[0];
-        const temp = data.main.temp;
-        console.log(this.actualWeather);
-        data = { weather, temp }
-        console.log(data);
-      },
-      error => console.error('ERROR', error)
-    )
+    return weatherData
+      .pipe (
+        map(data => {
+          return {
+            weatherMain: data.weather[0].main,
+            weatherDescription: data.weather[0].description,
+            temp: data.main.temp,
+            tempMin: data.main.temp_min,
+            tempMax: data.main.temp_max,
+            pressure: data.main.pressure,
+            humidity: data.main.humidity,
+            windSpeed: data.wind.speed,
+            windDeg: data.wind.deg,
+            clouds: data.clouds.all,
+            sunrise: data.sys.sunrise,
+            sunset: data.sys.sunset,
+          };
+        }),
+      );
   }
 
   getCities() {
-    this.http.get('../assets/city.list.json')
-    .subscribe(
-      data => {
-        console.log(data);
-        this.cities = data;
-      }
-    )
+    const citiesData = this.http.get('../assets/city.list.json');
+
   }
 }
