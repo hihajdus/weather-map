@@ -17,23 +17,22 @@
 		<p>weather: {{ weather.weatherMain }}</p>
 		<p>weather-description: {{ weather.weatherDescription }}</p>
 	</div>
-
 	<div *ngIf="data$ | async as weather" class="data__parameters">
 		<div class="row">
 			<div class="col-sm">
-				<p>temperature: {{ weather.temp - 273.15 | number:'1.0-0'}} C</p>
-				<p>pressure: {{ weather.pressure }} mb</p>
-				<p>humidity: {{ weather.humidity }} %</p>
-				<p>temp-average: {{ ((weather.tempMax - 273.15) - (weather.tempMin - 273.15)) | number:'1.0-0' }} C</p>
+				<p><fa-icon [icon]="faTemperature"></fa-icon> temperature: {{ weather.temp - 273.15 | number:'1.0-0'}} C</p>
+				<p><fa-icon [icon]="faPressure"></fa-icon> pressure: {{ weather.pressure }} mb</p>
+				<p><fa-icon [icon]="faHumidity"></fa-icon> humidity: {{ weather.humidity }} %</p>
+				<p><fa-icon [icon]="faTemperature"></fa-icon> temp-average: {{ ((weather.tempMax - 273.15) - (weather.tempMin - 273.15)) | number:'1.0-0' }} C</p>
 			</div>
 			<div class="col-sm">
-				<p>wind-speed: {{ weather.windSpeed }} m/s</p>
-				<p>wind-deg: {{ weather.windDeg }} </p>
+				<p><fa-icon [icon]="faSpeed"></fa-icon> wind-speed: {{ weather.windSpeed }} m/s</p>
+				<p><fa-icon [icon]="faDegrees"></fa-icon> wind-deg: {{ weather.windDeg }} </p>
 			</div>
 			<div class="col-sm">
-				<p>clouds: {{ weather.clouds }} %</p>
-				<p>sunrise: {{ weather.sunrise *1000 | date:'medium' }} </p>
-				<p>sunset: {{ weather.sunset *1000 | date:'medium' }} </p>
+				<p><fa-icon [icon]="faCloud"></fa-icon> clouds: {{ weather.clouds }} %</p>
+				<p><fa-icon [icon]="faSun"></fa-icon> sunrise: {{ weather.sunrise *1000 | date:'medium' }} </p>
+				<p><fa-icon [icon]="faSun"></fa-icon> sunset: {{ weather.sunset *1000 | date:'medium' }} </p>
 			</div>
 		</div>
 	</div>
