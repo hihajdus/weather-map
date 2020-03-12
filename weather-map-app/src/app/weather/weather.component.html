@@ -1,28 +1,41 @@
-<p>weather works!</p>
-<div>
-	<h1>Current weather data</h1>
-	<form [formGroup]="form" (ngSubmit)="onSubmit()">
-		<label for="cities">Cities</label>
-		<select formControlName="cities" id="cities">
-			<option *ngFor="let city of cities; let i = index">
-				{{cities[i].name}}
-			</option>
-		</select>
-		<button type="submit" class="btn btn-primary">Check the weather</button>
-	</form>
+<div class="container">
+	<div class="row weather">
+		<h3 class="col-sm weather__title">Current weather data: {{location}} </h3>
+		<form class="col-sm form" [formGroup]="form" (ngSubmit)="onSubmit()">
+			<!-- <label for="cities">Cities</label>
+			<select formControlName="cities" id="cities">
+					<option *ngFor="let city of cities; let i = index">
+						{{cities[i].name}}
+					</option>
+				</select> -->
+			<input formControlName="location" type="text" id="location" placeholder="Type location here" class="form-control form__input">
+			<button type="submit" class="btn btn-primary form__submit-btn">Check</button>
+		</form>
+	</div>
 
-	<div *ngIf="data$ | async as weather">
-		<p>temperature: {{ weather.temp - 273.15 | number:'1.0-0'}} C</p>
+	<div *ngIf="data$ | async as weather" class="data__weather">
 		<p>weather: {{ weather.weatherMain }}</p>
 		<p>weather-description: {{ weather.weatherDescription }}</p>
-		<p>temp-average: {{ ((weather.tempMax - 273.15) - (weather.tempMin - 273.15)) | number:'1.0-0' }} C</p>
-		<p>wind-speed: {{ weather.windSpeed }} m/s</p>
-		<p>pressure: {{ weather.pressure }} mb</p>
-		<p>humidity: {{ weather.humidity }} %</p>
-		<p>wind-deg: {{ weather.windDeg }} </p>
-		<p>clouds: {{ weather.clouds }} %</p>
-		<p>sunrise: {{ weather.sunrise *1000 | date:'medium' }} </p>
-		<p>sunset: {{ weather.sunset *1000 | date:'medium'}} </p>
+	</div>
+
+	<div *ngIf="data$ | async as weather" class="data__parameters">
+		<div class="row">
+			<div class="col-sm">
+				<p>temperature: {{ weather.temp - 273.15 | number:'1.0-0'}} C</p>
+				<p>pressure: {{ weather.pressure }} mb</p>
+				<p>humidity: {{ weather.humidity }} %</p>
+				<p>temp-average: {{ ((weather.tempMax - 273.15) - (weather.tempMin - 273.15)) | number:'1.0-0' }} C</p>
+			</div>
+			<div class="col-sm">
+				<p>wind-speed: {{ weather.windSpeed }} m/s</p>
+				<p>wind-deg: {{ weather.windDeg }} </p>
+			</div>
+			<div class="col-sm">
+				<p>clouds: {{ weather.clouds }} %</p>
+				<p>sunrise: {{ weather.sunrise *1000 | date:'medium' }} </p>
+				<p>sunset: {{ weather.sunset *1000 | date:'medium' }} </p>
+			</div>
+		</div>
 	</div>
 
 </div>

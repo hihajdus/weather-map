@@ -13,16 +13,16 @@ export class WeatherComponent implements OnInit{
 
   cities;
 
-  public city = 'London';
-  public temp = 0;
   public weather;
+  public location;
 
   form: FormGroup;
 
   constructor(private fb: FormBuilder, private dataService: DataService) {
 
     this.form = this.fb.group({
-      cities: ['']
+      cities: [''],
+      location: ''
     });
 
   }
@@ -32,6 +32,8 @@ export class WeatherComponent implements OnInit{
   }
 
   onSubmit() {
-    this.data$ = this.dataService.getWeather();
+    this.location = this.form.value.location;
+    console.log(this.location);
+    this.data$ = this.dataService.getWeather(this.location);
   }
 }

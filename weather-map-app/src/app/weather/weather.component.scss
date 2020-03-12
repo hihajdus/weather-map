@@ -1,0 +1,17 @@
+.weather {
+	padding: 50px 0;
+}
+.weather__title {
+	min-width: 400px;
+}
+.form {
+	display: flex;
+	justify-content: end;
+}
+.form__input {
+	width: 200px;
+}
+.form__submit-btn {
+	align-self: flex-start;
+	margin: 0 0 0 20px;
+}

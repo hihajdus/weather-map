@@ -8,12 +8,11 @@ import { map } from 'rxjs/operators';
 export class DataService {
   private api = 'http://api.openweathermap.org/data/2.5';
   private key = '4af71dd87878c111509d52acbe644062';
-  private myCity = 'Katowice';
 
   constructor(private http: HttpClient) {}
 
-  getWeather() {
-    const weatherData = this.http.get<any>(`${this.api}/weather?q=${this.myCity}&appid=${this.key}`);
+  getWeather(location) {
+    const weatherData = this.http.get<any>(`${this.api}/weather?q=${location}&appid=${this.key}`);
 
     return weatherData
       .pipe (
@@ -38,6 +37,5 @@ export class DataService {
 
   getCities() {
     const citiesData = this.http.get('../assets/city.list.json');
-
   }
 }
