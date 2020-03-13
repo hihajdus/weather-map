@@ -9,19 +9,19 @@ import { WeatherComponent } from './weather/weather.component';
 import { MapComponent } from './map/map.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AgmCoreModule } from "@agm/core";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    WeatherComponent,
-    MapComponent
-  ],
+  declarations: [AppComponent, WeatherComponent, MapComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCMKhagUc5sg6QW0hZIDKn204lh46YQhJg'
+    })
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
