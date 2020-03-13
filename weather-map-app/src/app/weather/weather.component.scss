@@ -2,7 +2,7 @@
 	padding: 50px 0;
 }
 .weather__title {
-	min-width: 400px;
+	min-width: 450px;
 }
 .form {
 	display: flex;
@@ -14,6 +14,15 @@
 .form__submit-btn {
 	align-self: flex-start;
 	margin: 0 0 0 20px;
+}
+.data__weather {
+	padding: 25px 0;
+}
+.data__parameters {
+	padding: 25px 0;
+}
+.data__coords {
+	padding: 25px 0;
 }
 agm-map {
 	height: 400px;

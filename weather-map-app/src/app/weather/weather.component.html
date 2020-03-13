@@ -32,8 +32,20 @@
 	</div>
 
 	<div class="map">
-		<agm-map [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType'>
+		<agm-map
+			[latitude]='latitude'
+			[longitude]='longitude'
+			[mapTypeId]='mapType'
+		>
 		</agm-map>
+
+		<agm-marker
+			*ngIf="data$ | async as coord"
+			[latitude]="coord.latitude"
+			[longitude]="coord.longitude"
+			[label]="'M'">
+		</agm-marker>
+
 		<div *ngIf="data$ | async as weather" class="data__coords">
 			<p>longitude: {{ weather.longitude }}</p>
 			<p>latitude: {{ weather.latitude }}</p>
