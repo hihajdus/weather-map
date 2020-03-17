@@ -21,6 +21,7 @@ export class DataService {
         return {
           weatherMain: data.weather[0].main,
           weatherDescription: data.weather[0].description,
+          weatherIcon: data.weather[0].icon,
           temp: data.main.temp,
           tempMin: data.main.temp_min,
           tempMax: data.main.temp_max,
