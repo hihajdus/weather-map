@@ -14,9 +14,9 @@ export class WeatherComponent implements OnInit {
   public location;
   public form: FormGroup;
 
-  public latitude = -28.68352;
-  public longitude = -147.20785;
-  public mapType = "satellite";
+  public latitude = 50.26;
+  public longitude = 19.03;
+  public mapType = "roadmap";
 
   faTemperature = faThermometerEmpty;
   faHumidity = faTint;
