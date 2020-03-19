@@ -39,5 +39,12 @@ export class WeatherComponent implements OnInit {
   onSubmit() {
     this.location = this.form.value.location;
     this.data$ = this.dataService.getWeather(this.location);
+    this.getLoop();
+  }
+
+  getLoop() {
+    for (let i=0; i>10; i++ ) {
+      console.log(i);
+    }
   }
 }

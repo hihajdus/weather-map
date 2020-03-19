@@ -1,8 +1,23 @@
 .weather {
 	padding: 25px 0;
+	@media (min-width: 578px) {
+		position: relative;
+	}
 }
 .weather__title {
-	padding: 25px 0;
+	padding: 50px 0 0 0;
+	@media (max-width: 576px) {
+		padding: 25px 0 0 0;
+		text-align: center;
+	}
+}
+.weather__img {
+	@media (max-width: 576px) {
+		margin: 0 auto;
+		display: block;
+	}
+}
+.weather__text {
 	@media (max-width: 576px) {
 		text-align: center;
 	}
@@ -10,15 +25,14 @@
 .form {
 	display: flex;
 	justify-content: end;
-}
-.form__input {
+	@media (min-width: 578px) {
+		position: absolute;
+		right: 0;
+	}
 }
 .form__submit-btn {
 	align-self: flex-start;
 	margin: 0 0 0 20px;
-}
-.data__weather {
-	padding: 25px 0;
 }
 .data__parameters {
 	padding: 25px 0;
